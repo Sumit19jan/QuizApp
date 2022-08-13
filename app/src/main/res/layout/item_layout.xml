@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:elevation="5dp"
+    android:padding="5dp"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:text="What is the capital of India"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvOption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/option_bg"
+            android:drawableStart="@drawable/option_circle"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:text="Delhi"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvOption2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/option_bg"
+            android:drawableStart="@drawable/option_circle"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:text="Delhi"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvOption3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvOption1"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/option_bg"
+            android:drawableStart="@drawable/option_circle"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:text="Delhi"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvOption4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvOption2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/option_bg"
+            android:drawableStart="@drawable/option_circle"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:text="Delhi"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
