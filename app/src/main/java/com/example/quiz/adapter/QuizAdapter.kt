@@ -6,19 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quiz.R
+import com.example.quiz.listener.OnClickListener
 import com.example.quiz.model.QuizModel
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class QuizAdapter(
     private val context: Context,
-    private val quizList: MutableList<QuizModel>
+    private val quizList: MutableList<QuizModel>,
+    private val onClickListener: OnClickListener
 ) : RecyclerView.Adapter<QuizAdapter.QuizViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuizViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
-        return QuizViewHolder(view)
+        return QuizViewHolder(view, onClickListener)
     }
 
     override fun onBindViewHolder(holder: QuizViewHolder, position: Int) {
@@ -30,7 +32,8 @@ class QuizAdapter(
         return quizList.size
     }
 
-    class QuizViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+    class QuizViewHolder(private val view: View, private val onClickListener: OnClickListener) :
+        RecyclerView.ViewHolder(view) {
 
         fun setData(quizModel: QuizModel) {
             view.tvQuestion.text = quizModel.question
@@ -38,6 +41,8 @@ class QuizAdapter(
             view.tvOption2.text = quizModel.secondOption
             view.tvOption3.text = quizModel.thirdOption
             view.tvOption4.text = quizModel.forthOption
+
+            onClickListener.onClick(quizModel)
         }
     }
 

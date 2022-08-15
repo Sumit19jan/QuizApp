@@ -2,9 +2,11 @@ package com.example.quiz.database
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import com.example.quiz.model.QuizModel
 
 class DatabaseHandler(private val context: Context) :
     SQLiteOpenHelper(context, DATA_BASE, null, VERSION) {
@@ -91,6 +93,51 @@ class DatabaseHandler(private val context: Context) :
         db.delete(TABLE_NAME, "ID = $id", null)
     }
 
+    fun fetchData(): MutableList<QuizModel> {
+
+        val db = readableDatabase
+        val quizList = mutableListOf<QuizModel>()
+        val query = "select * from $TABLE_NAME"
+
+        val cursor = db.rawQuery(query, null)
+        val questionIndex = cursor.getColumnIndex(QUESTION)
+        val firstOptionIndex = cursor.getColumnIndex(FIRST_OPTION)
+        val secondOptionIndex = cursor.getColumnIndex(SECOND_OPTION)
+        val thirdOptionIndex = cursor.getColumnIndex(THIRD_OPTION)
+        val forthOptionIndex = cursor.getColumnIndex(FORTH_OPTION)
+        val answerIndex = cursor.getColumnIndex(ANSWER)
+        val idIndex = cursor.getColumnIndex(ID)
+
+        if (cursor != null && cursor.count > 0) {
+            cursor.moveToFirst()
+
+            do {
+                val id = cursor.getInt(idIndex)
+                val question = cursor.getString(questionIndex)
+                val firstOption = cursor.getString(firstOptionIndex)
+                val secondOption = cursor.getString(secondOptionIndex)
+                val thirdOption = cursor.getString(thirdOptionIndex)
+                val forthOption = cursor.getString(forthOptionIndex)
+                val answer = cursor.getString(answerIndex)
+
+                val quizModel =
+                    QuizModel(
+                        id,
+                        question,
+                        firstOption,
+                        secondOption,
+                        thirdOption,
+                        forthOption,
+                        answer
+                    )
+                quizList.add(quizModel)
+
+            } while (cursor.moveToNext())
+
+            cursor.close()
+        }
+        return quizList
+    }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
